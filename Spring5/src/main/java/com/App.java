@@ -10,8 +10,10 @@ public class App {
 		
 		//dependecy inversion
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		Car myCar = context.getBean(Car.class);
-		System.out.println(myCar.specs());
+		Car myCar1 = context.getBean("indica", Car.class);
+		Car myCar2 = context.getBean("swift", Car.class);
+		System.out.println(myCar1.specs());
+		System.out.println(myCar2.specs());
 		context.close();
 
 	}

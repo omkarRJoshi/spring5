@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 import com.interfaces.Car;
 
-@Component
+@Component("swift")
 public class Swift implements Car {
 
 	@Override
