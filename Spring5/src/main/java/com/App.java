@@ -14,6 +14,7 @@ public class App {
 		Car myCar2 = context.getBean("swift", Car.class);
 		System.out.println(myCar1.specs());
 		System.out.println(myCar2.specs());
+		
 		context.close();
 
 	}
