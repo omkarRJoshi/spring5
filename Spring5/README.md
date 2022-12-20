@@ -7,7 +7,8 @@ InterfaceName obj = new Class();
 ```
 - object creation by using dependency inversion which is provided by Spring
 ```
-// In AppConfig class we define a package, for which we want to use components like - @ComponentScan("com") on above Declaration of AppConfig class
+// In AppConfig class we define a package, for which we want to use components 
+// like - @ComponentScan("com") on above Declaration of AppConfig class
 AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 Interface myCar1 = context.getBean("<annotation_for_class>", Car.class);
 ```
