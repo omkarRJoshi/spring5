@@ -1,6 +1,8 @@
-package com.interfaces;
+package com.cars;
 
 import org.springframework.stereotype.Component;
+
+import com.interfaces.Car;
 
 @Component("corolla")
 public class Corolla implements Car {
