@@ -16,3 +16,10 @@ InterfaceName obj = new Class();
 AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 Interface myCar1 = context.getBean("<annotation_for_class>", Car.class);
 ```
+
+### 1.1 Autowire
+- Whenever we use @Autowired annotation, we are making use of a default constructor
+- whenever there is not a requirement to create a object of autowired class in the memory, we can make required a false like `@Autowired(required = false)` 
+  - due to this, spring will skip the object creation if we dont use it in the code
+- If we use @Autowired on property or constructor, it makes no difference
+- but when we use @Autowired on method, then there is difference, we need to explicityly call or we need to annotation on method to run it
