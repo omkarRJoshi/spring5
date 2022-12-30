@@ -23,3 +23,24 @@ Interface myCar1 = context.getBean("<annotation_for_class>", Car.class);
   - due to this, spring will skip the object creation if we dont use it in the code
 - If we use @Autowired on property or constructor, it makes no difference
 - but when we use @Autowired on method, then there is difference, we need to explicityly call or we need to annotation on method to run it
+
+### 1.2 Bean
+- we can get rid of the @Component annotation us using @Bean annotaion in the AppConfig.java file
+- ex 
+```
+import org.springframework.stereotype.Component;
+@Component("swift")
+public class Swift implements Car {
+
+}
+```
+  we can achieve same this by adding below code in appConfig.java file
+```
+import org.springframework.context.annotation.Bean;
+
+
+@Bean("swift")
+	public Swift swift() {
+		return new Swift();
+	}
+```
