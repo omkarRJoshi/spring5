@@ -45,3 +45,95 @@ import org.springframework.context.annotation.Bean;
 	}
 ```
 
+---
+
+## Spring MVC
+
+### syntax of view for Forms, input, radio buttons, dropdown, text input, checkboxes
+
+userFormView.jsp
+```
+<body>
+	<form:form action="displayUserInfo" modelAttribute="user">
+		Name : <form:input path="name" />
+		<p />
+		Gender : <form:radiobuttons path="gender" items="${genderMap}" />
+		<p />
+		Country : <form:select path="country" items="${countryMap }">
+					
+				  </form:select>
+		<p />
+		Introduction : <form:textarea path="intro" />
+		<p/>
+		Visited Countries : <form:checkboxes items="${visitedCountriesMap }" path="visitedCountries" />
+		<p/>
+		<input type="submit" value="Submit" />
+	</form:form>
+
+</body>
+</html>
+```
+MainController.java
+```
+@GetMapping("/")
+	public ModelAndView home() {
+		ModelAndView modelAndView = new ModelAndView("userFormView");
+		User user = new User();
+		Map<String, String> genderMap = new HashMap<String, String>();
+		genderMap.put("male", "Male");
+		genderMap.put("female", "Female");
+		
+		Map<String, String> countryMap = new HashMap<String, String>();
+		countryMap.put("India", "India");
+		countryMap.put("China", "China");
+		countryMap.put("USA", "USA");
+		countryMap.put("UK", "UK");
+		
+		Map<String, String> visitedCountriesMap = new HashMap<String, String>();
+		visitedCountriesMap.put("India", "India");
+		visitedCountriesMap.put("China", "China");
+		visitedCountriesMap.put("USA", "USA");
+		visitedCountriesMap.put("UK", "UK");
+		
+		modelAndView.addObject("genderMap", genderMap);
+		modelAndView.addObject("countryMap", countryMap);
+		modelAndView.addObject("visitedCountriesMap", visitedCountriesMap);
+		modelAndView.addObject("user", user);
+		
+		return modelAndView;
+	}
+	
+	@PostMapping("/displayUserInfo")
+	public ModelAndView displayUserInfo(@ModelAttribute User user) {
+		ModelAndView modelAndView = new ModelAndView("displayUserInfoView");
+		modelAndView.addObject("userinfo", user);
+		return modelAndView;
+	}
+```
+displayUserInfoView.jsp
+```
+<body>
+Name : ${userinfo.name} <p/>
+Gender : ${userinfo.gender} <p/>
+Country : ${userinfo.country} <p/>
+Introduction : ${userinfo.intro} <p/>
+VisitedCountries : 
+<ul>
+<c:forEach items = "${user.visitedCountries }" var = "country">
+	<li>${country }</li>
+</c:forEach>
+</ul>
+</body>
+```
+User.java
+```
+public class User {
+	private String name;
+	private String gender;
+	private String country;
+	private String intro;
+	private String[] visitedCountries;
+
+  //getters and setters for all above variables
+}
+```
