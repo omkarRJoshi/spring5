@@ -49,6 +49,12 @@ import org.springframework.context.annotation.Bean;
 
 ## Spring MVC
 
+### taglibs to add at the top of jsp files
+```
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+```
+
 ### syntax of view for Forms, input, radio buttons, dropdown, text input, checkboxes
 
 userFormView.jsp
